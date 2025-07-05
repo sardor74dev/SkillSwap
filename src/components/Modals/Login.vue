@@ -1,6 +1,36 @@
 <script>
+import { loginUser } from '@/api/auth';
+import { login } from '@/utils/auth';
+
 export default {
+    data(){
+        return {
+            username: '',
+            password: '',
+            email: '',
+            error: null,
+            success: false
+        }
+    },
     methods: {
+        // async submitLogin() {
+        //     const obj = {
+        //         username: this.username,
+        //         password: this.password
+        //     }
+        //     try {
+        //         const result = await loginUser(obj);
+        //         this.success = true;
+        //         console.log(result)
+        //     } catch (err) {
+        //         this.error = err.response?.data?.message || 'Registration failed';
+        //         console.error(this.error)
+        //     }
+        // },
+        handleLogin() {
+            login()
+            this.$router.push('/profile')
+        },
         close(){
             this.$emit('close')
         }
@@ -19,29 +49,24 @@ export default {
                     </button>
                 </div>
                 
-                <form class="space-y-6">
+                <form @submit.prevent="handleLogin()" class="space-y-6">
+                    <!-- <div>
+                        <label for="username" class="block text-sm font-medium text-gray-700">Email address</label>
+                        <div class="mt-1">
+                            <input id="username" v-model="username" name="username" type="text" autocomplete="username" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                    </div> -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
                         <div class="mt-1">
-                            <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                            <input v-model="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                         </div>
                     </div>
                     
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                         <div class="mt-1">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
-                        </div>
-                        
-                        <div class="text-sm">
-                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Forgot your password?</a>
+                            <input id="password" v-model="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                         </div>
                     </div>
                     

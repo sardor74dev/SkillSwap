@@ -11,34 +11,31 @@ export default {
 </script>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-
-const loginModal = ref(false)
-const registerModal = ref(false)
+import { useRoute, useRouter, RouterView } from 'vue-router'
+import { computed } from 'vue';
 
 const route = useRoute()
 const router = useRouter()
 
-watch(route, (to) => {
-  if (to.path === '/login') loginModal.value = true
-  else if (to.path === '/register') registerModal.value = true
-  else {
-    loginModal.value = false
-    registerModal.value = false
-  }
-})
+// Управляем отображением из URL
+const showLogin = computed(() => route.path === '/login')
+const showRegister = computed(() => route.path === '/register')
+
+function closeModals() {
+  router.push('/') // убираем /login или /register из адресной строки
+}
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col">
     <Header
-      :login-modal="loginModal"
-      :register-modal="registerModal" 
+      :show-login="showLogin" 
+      :show-register="showRegister" 
+      @close-modals="closeModals"
     />
 
     <main class="flex-1 pt-16">
-      <RouterView />
+      <router-view />
     </main>
 
     <Footer />

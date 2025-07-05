@@ -1,3 +1,14 @@
+<script setup>
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
+
+onMounted(() => {
+    console.log(route.fullPath)
+})
+</script>
+
 <template>
     <section id="profile" class="min-h-screen bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

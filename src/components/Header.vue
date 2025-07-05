@@ -7,51 +7,57 @@ export default {
         Registration,
         Login
     },
+    props: ["showLogin", "showRegister"],
     data(){
         return {
             mobileOpen: false,
             registrationOpen: false,
             loginOpen: false
         }
+    },
+    methods: {
+        closeModal() {
+            this.$emit('close-modals')
+        }
     }
 }
 </script>
 <template>
-    <Registration v-if="loginModal" @close="registrationOpen = false" />
-    <Login v-if="registrationOpen" @close="loginOpen = false" />
+    <!-- <Registration v-if="registrationOpen" @close="registrationOpen = false" /> -->
+    <Login v-if="showLogin" @close="closeModal" />
     <nav class="bg-white shadow-sm fixed top-0 left-0 w-full z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="flex-shrink-0 flex items-center">
                         <i class="fas fa-users text-blue-600 text-2xl mr-2"></i>
-                        <span class="text-xl font-bold text-blue-600">YouthConnect</span>
-                    </div>
+                        <span class="text-xl font-bold text-blue-600">Real Networking</span>
+                    </a>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="#home" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium active-tab">
+                        <a href="/" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium active-tab">
                             Home
                         </a>
-                        <a href="#profile" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/profile" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Profile
                         </a>
-                        <a href="#matching" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/matching" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Matching
                         </a>
-                        <a href="#events" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/events" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Events
                         </a>
                     </div>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <button @click="$router.push('/register')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
+                    <!-- <button @click="registrationOpen = true" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
                         Sign Up
-                    </button>
+                    </button> -->
                     <button @click="$router.push('/login')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
                         Sign In
                     </button>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
+                    <!-- <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
                         Sign Out
-                    </button>
+                    </button> -->
                 </div>
                 <div class="-mr-2 flex items-center sm:hidden">
                     <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false">
