@@ -35,7 +35,7 @@ body {
 }
 
 .active-tab {
-  /* border-bottom: 3px solid #2563eb; */
+  border-bottom: 3px solid #2563eb;
   color: #2563eb;
   font-weight: 600;
 }

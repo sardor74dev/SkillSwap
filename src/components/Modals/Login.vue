@@ -43,7 +43,7 @@ export default {
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-2xl font-bold text-gray-900">Welcome Back</h3>
+                    <h3 class="text-2xl text-center font-bold text-gray-900">Log In</h3>
                     <button @click="close()" id="close-login" class="text-gray-400 hover:text-gray-500">
                         <i class="fas fa-times"></i>
                     </button>
@@ -77,7 +77,7 @@ export default {
                     </div>
                 </form>
                 
-                <div class="mt-6">
+                <!-- <div class="mt-6">
                     <div class="relative">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-gray-300"></div>
@@ -106,14 +106,14 @@ export default {
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
-                <div class="mt-6 text-center">
+                <!-- <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600">
                         Don't have an account? 
                         <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Sign up</a>
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -19,6 +19,9 @@ export default {
         closeModal() {
             this.$emit('close-modals')
         }
+    },
+    mounted(){
+        console.log(this.$route.fullPath)
     }
 }
 </script>
@@ -34,16 +37,16 @@ export default {
                         <span class="text-xl font-bold text-blue-600">Real Networking</span>
                     </a>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="/" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium active-tab">
+                        <a href="/" :class="[$route.fullPath === '/' ? 'active-tab' : '']" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Home
                         </a>
-                        <a href="/profile" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/profile" :class="[$route.fullPath === '/profile' ? 'active-tab' : '']" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Profile
                         </a>
-                        <a href="/matching" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/matching" :class="[$route.fullPath === '/matching' ? 'active-tab' : '']" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Matching
                         </a>
-                        <a href="/events" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/events" :class="[$route.fullPath === '/events' ? 'active-tab' : '']" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Events
                         </a>
                     </div>
